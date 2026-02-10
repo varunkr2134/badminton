@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Badminton Valentine 🏸💖</title>
+
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            font-family: 'Comic Sans MS', cursive;
+            overflow: hidden;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            /* BACKGROUND IMAGE */
+            background-image: url("images/bg-main.jpg");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        h1 {
+            color: #c2185b;
+            font-size: 2.8rem;
+            margin-bottom: 30px;
+            text-align: center;
+
+            background: rgba(255, 255, 255, 0.6);
+            padding: 15px 25px;
+            border-radius: 15px;
+        }
+
+        .buttons {
+            position: relative;
+        }
+
+        button {
+            padding: 15px 40px;
+            font-size: 1.2rem;
+            margin: 10px;
+            border-radius: 12px;
+            border: 2px solid #c2185b;
+            background-color: #ff80ab;
+            cursor: pointer;
+        }
+
+        #yes {
+            background-color: #ff80ab;
+        }
+
+        #no {
+            position: absolute;   /* REQUIRED for movement */
+            background-color: #ff80ab;
+            transition: all 0.15s ease;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Will you be my Badminton Valentine 🏸💖?</h1>
+
+    <div class="buttons">
+        <button id="yes">Yes 🏸💖</button>
+        <button id="no">No 😒</button>
+    </div>
+
+    <script>
+        const noBtn = document.getElementById("no");
+        const yesBtn = document.getElementById("yes");
+
+        let noClicks = 0;
+
+        function moveNoButton() {
+            const x = Math.random() * (window.innerWidth - 120);
+            const y = Math.random() * (window.innerHeight - 120);
+
+            noBtn.style.left = x + "px";
+            noBtn.style.top = y + "px";
+            noBtn.style.transform = `rotate(${Math.random() * 360}deg)`;
+        }
+
+        noBtn.addEventListener("click", () => {
+            noClicks++;
+
+            if (noClicks <= 5) {
+                moveNoButton();
+            } else {
+                window.location.href = "no.html";
+            }
+        });
+
+        yesBtn.addEventListener("click", () => {
+            window.location.href = "yes.html";
+        });
+    </script>
+
+</body>
+</html>
